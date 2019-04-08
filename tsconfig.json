@@ -15,9 +15,13 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/declarations"
+    ],
+    "isolatedModules": true
   },
   "include": [
     "src"
