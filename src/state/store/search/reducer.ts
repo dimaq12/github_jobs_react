@@ -2,7 +2,6 @@ import { SearchAction, COUNTRY_SET, GET_JOB_LIST_SUCCESS } from "./actions";
 
 const defaultSearchState: SearchState = {
     jobDescription: "",
-    data: []
 };
 
 export function searchReducer(state: SearchState = defaultSearchState, action: SearchAction): SearchState {
@@ -16,7 +15,6 @@ export function searchReducer(state: SearchState = defaultSearchState, action: S
         case GET_JOB_LIST_SUCCESS:
             return {
                 ...state,
-                data: action.data,
             }  
 
         default:

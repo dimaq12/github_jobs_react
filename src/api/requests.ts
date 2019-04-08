@@ -1,18 +1,4 @@
-const root = 'https://jobs.github.com/positions.json'
-
-async function convertResult (resp: any) {
-    if (resp.ok) {
-        return {
-            ok: true,
-            data: await resp.json()
-        };
-    } else {
-        return {
-            ok: false,
-            error: await resp.json()
-        };
-    }
-}
+const root = 'http://localhost:5000/positions.json'
 
 const fetchWrapper = (request: RequestInfo, init?: RequestInit) => {
     return fetch(request, init)
@@ -23,15 +9,14 @@ const fetchWrapper = (request: RequestInfo, init?: RequestInit) => {
 
 const headers = () =>
     new Headers({
-        Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     });
 
 
 export const getJobsListRequest = async (desc: string, location: string, fullTime: boolean) => {
-    const resp = await fetchWrapper(`${root}/?description=${desc}&location=${location}&full_time=${true}`, {
+    const resp = await fetchWrapper(`${root}?description=${desc}&full_time=${fullTime}&location=${location}`, {
         method: "GET",
         headers: headers()
     });
-    return convertResult(resp);
+    return await resp.json();
 };

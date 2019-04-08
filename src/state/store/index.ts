@@ -1,7 +1,8 @@
 import { createBrowserHistory } from "history";
-import { detailsReducer, detailsSaga } from "./details";
+import { detailsReducer, detailsSaga }  from "./details";
 import { searchReducer, searchSaga } from "./search";
 import createSagaMiddleware from "redux-saga";
+import { all } from "redux-saga/effects";
 
 import { combineReducers, compose, createStore, applyMiddleware } from "redux";
 const composeEnhancers = window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] || compose;

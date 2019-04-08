@@ -1,7 +1,8 @@
 import { DetailsAction, DETAILS_SET } from "./actions";
 
 const defaultDetailsState: DetailsState = {
-    detailDescription: ""
+    detailDescription: "",
+    data: {}
 };
 
 export function detailsReducer(state: DetailsState = defaultDetailsState, action: DetailsAction): DetailsState {
@@ -9,7 +10,7 @@ export function detailsReducer(state: DetailsState = defaultDetailsState, action
         case DETAILS_SET:
             return {
                 ...state,
-                detailDescription: "description"
+                data:action.data 
             }       
 
         default:

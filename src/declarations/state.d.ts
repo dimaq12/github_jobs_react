@@ -6,11 +6,12 @@ declare interface AppState {
 
 declare interface SearchState{
     jobDescription: string | undefined;
-    data: [];
+   
 }
 
 declare interface DetailsState{
     detailDescription: string | undefined;
+    data: {};
 }
 
 declare interface Window {
