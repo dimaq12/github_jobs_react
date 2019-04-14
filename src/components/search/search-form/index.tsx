@@ -1,100 +1,43 @@
 import * as React from 'react';
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import { detailsGet } from "../../../state/store/details"
-import {
-    Form, Icon, Input, Button, Checkbox
-  } from 'antd';
+import { reduxForm, Field, InjectedFormProps } from 'redux-form'
+import { TextField, CheckboxField } from "redux-form-antd"
+import { Row, Button, Form } from 'antd';
 
-interface SearchFormComponentProps {
-    data: any
-    onSubmit(description: string, location: string, isFoolTime: boolean): any;
-}
-
-class SearchFormComponent extends React.PureComponent<SearchFormComponentProps, {}> {
-    constructor(props: SearchFormComponentProps) {
-        super(props);
-        this.state = {
-            description: "",
-            location: ""
-        }
-    };
-
-    componentDidMount() {
-        
-    }
-
-    search(e: any){
-        e.preventDefault()
-
-        console.log(e)
-        //this.props.onSubmit('python', 'berlin', true)
-    }
-
-    handleFieldChange(e:any) {
-        const name = e.target.name;
-        if (name === 'description') {
-            this.setState({ description: e.target.value });
-            
-        } else if (name === 'location') {
-            this.setState({ location: e.target.value});
-        }
-        else if (name === 'isfulltime') {
-            this.setState({isfulltime: e.target.value });
-        }
-    }
-
+class SearchFormComponent extends React.PureComponent<InjectedFormProps> {
     render() {
+        const { handleSubmit, pristine, submitting } = this.props;
+
+        const formItemLayout = {
+            labelCol: {
+              sm: { span: 8 },
+            },
+            wrapperCol: {
+              sm: { span: 16 },
+            },
+        };
+
+        const checkboxFormItemLayout = {
+            labelCol: {
+              sm: { span: 19, offset: 3},
+            },
+            wrapperCol: {
+              sm: { span: 2 },
+            },
+        };
+                 
         return (
-            <Form layout="inline" onSubmit={(e) => this.search(e)}>
-                <Form.Item label="Job Description">
-                    <Input
-                        name="description"
-                        prefix={<Icon type="highlight" 
-                        style={{ color: 'rgba(0,0,0,.25)' }} />} 
-                        placeholder="Filter by title, benefits, companies, expertise"
-                        onChange={(event: React.FormEvent<HTMLInputElement>) => this.handleFieldChange(event)} />
-                </Form.Item>
-                <Form.Item label="Location">
-                    <Input 
-                        name="location"
-                        prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }}/>} 
-                        placeholder="Filter by city, state, zip code or country"
-                        onChange={(event: React.FormEvent<HTMLInputElement>) => this.handleFieldChange(event)} />
-                </Form.Item>
-                <Form.Item>
-                    <Checkbox
-                        name="isfulltime"
-                        onChange={(event) => this.handleFieldChange(event)}>
-                        Full Time Only
-                    </Checkbox>
-                </Form.Item>
-                <Form.Item >
-                    <Button 
-                        type="primary"
-                        htmlType="submit"
-                        className="login-form-button">
-                        Search
-                    </Button>
-                </Form.Item>
+            <Form style={{ background: '#bae7ff', padding: '20px', borderRadius: "0, 0, 20px, 20px" }} {...formItemLayout} onSubmit={handleSubmit}>
+                <Row gutter={1} type="flex" justify="center" align="middle">
+                    <Field {...formItemLayout} name="description" label="Job Description" component={TextField} placeholder="Filter by title, benefits, companies, expertise"/>
+                    <Field {...formItemLayout} name="location" label="Location" component={TextField} placeholder="Filter by city, state, zip code or country"/>
+                    <Field {...checkboxFormItemLayout} label="Full Time" name="isFullTime" value={false} component={CheckboxField}/>
+                    <Button style={{ marginLeft: 24, marginBottom: 24  }} type="primary" disabled={pristine || submitting} htmlType="submit">Submit</Button>
+                </Row>
             </Form>
         );
     }
 }
 
-
-const mapStateToProps = (state: any) => {
-    return {
-        data: state.search.data
-    };
-};
-
-const mapDispatchToProps = (dispatch:any) => {
-    return {
-        onSubmit(description: string, location: string, isFoolTime: boolean){
-            dispatch(detailsGet(description, location, isFoolTime))
-        }
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchFormComponent);
+export default reduxForm({
+    form: 'searchForm'
+})(SearchFormComponent)

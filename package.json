@@ -17,6 +17,8 @@
     "react-router-dom": "^5.0.0",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "2.1.8",
+    "redux-form": "^8.2.0",
+    "redux-form-antd": "^3.1.9",
     "redux-saga": "^1.0.2",
     "typescript": "3.4.2"
   },
@@ -38,6 +40,7 @@
   "devDependencies": {
     "@types/react-redux": "^7.0.6",
     "@types/react-router-redux": "^5.0.18",
+    "@types/redux-form": "^8.1.1",
     "@types/redux-saga": "^0.10.5"
   }
 }

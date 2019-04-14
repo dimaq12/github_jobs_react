@@ -1,10 +1,11 @@
 import { createBrowserHistory } from "history";
-import { detailsReducer, detailsSaga }  from "./details";
-import { searchReducer, searchSaga } from "./search";
+import { combineReducers, compose, createStore, applyMiddleware } from "redux";
+import { reducer as formReducer } from 'redux-form'
 import createSagaMiddleware from "redux-saga";
 import { all } from "redux-saga/effects";
 
-import { combineReducers, compose, createStore, applyMiddleware } from "redux";
+import { detailsReducer, detailsSaga }  from "./details";
+import { searchReducer, searchSaga } from "./search";
 const composeEnhancers = window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] || compose;
 import { routerMiddleware, connectRouter  } from 'connected-react-router'
 
@@ -17,6 +18,7 @@ export const store = createStore<AppState, any, any, any>(
         router: connectRouter(history),
         details: detailsReducer,
         search: searchReducer,
+        form: formReducer
     }),
     composeEnhancers( applyMiddleware(sagaMiddleware, routerMiddleware(history)))
 );

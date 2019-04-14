@@ -7,7 +7,6 @@ const {
   Header
 } = Layout;
 
-
 export const AppHeader = () => {
     return (
         <Header>

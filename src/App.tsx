@@ -6,19 +6,9 @@ import  Search  from "./components/search"
 import  Details  from "./components/details"
 import { Layout } from 'antd';
 
-const {
-  Sider, Content,
-} = Layout;
+const { Sider, Content, } = Layout;
 
-interface AppComponentProps extends RouteComponentProps<{}> {
-    
-}
-
-
-class AppComponent extends React.PureComponent<AppComponentProps, {}> {
-    componentDidMount() {
-        
-    }
+class AppComponent extends React.PureComponent<RouteComponentProps, {}> {
 
     render() {
         return (
@@ -31,7 +21,8 @@ class AppComponent extends React.PureComponent<AppComponentProps, {}> {
                         </Switch>
                     </Content>
                 <AppFooter/>
-            </Layout>);
+            </Layout>
+        );
     }
 }
 

@@ -2,11 +2,18 @@ declare interface AppState {
     router: any;
     details: DetailsState;
     search: SearchState;
+    form: any;
 }
-
+declare interface FormState{
+    description: string;
+    location: string;
+    isFullTime: boolean;
+}
 declare interface SearchState{
-    jobDescription: string | undefined;
-   
+    page: number;
+    count: number;
+    data: JobData[];
+    markedLinks: {};
 }
 
 declare interface DetailsState{
