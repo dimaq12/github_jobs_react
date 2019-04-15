@@ -1,14 +1,17 @@
 import * as React from 'react';
+import { Row, Col, Layout, Button, Pagination } from 'antd';
+const { Content } = Layout;
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { detailsGet } from './../../state/store/details/actions'
-import ReactMarkdown from 'react-markdown'
+import { DetailsJobComponent } from "./Details"
+
 
 interface DetailsComponentProps extends RouteComponentProps<{id: string}> {
     getJobDetails(id: string): any;
     jobId: string;
-    data: JobData | {};
+    data: JobData | null;
 }
 
 class DetailsComponent extends React.PureComponent<DetailsComponentProps, {}> {
@@ -21,9 +24,16 @@ class DetailsComponent extends React.PureComponent<DetailsComponentProps, {}> {
         const  jobDetails  = this.props.data;
 
         return (
-            <div>
-                <ReactMarkdown source={jobDetails.description}/>
-            </div>);
+            <React.Fragment>
+                <Content>
+                    <div style={{ background: '#fff', padding: '20px', minHeight: 'calc(100vh - 200px)', overflow: 'hidden' }}>
+                        {jobDetails &&
+                            <DetailsJobComponent jobDetails={jobDetails}/>
+                        }
+                    </div>
+                </Content>
+            </React.Fragment>
+        );
     }
 }
 

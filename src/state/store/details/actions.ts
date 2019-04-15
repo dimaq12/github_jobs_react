@@ -21,7 +21,7 @@ export type DETAILS_SET = typeof DETAILS_SET;
 
 export interface DetailsSet {
     type: DETAILS_SET;
-    data: {}
+    data: JobData
 }
 
 export const detailsSet = (data:any ): DetailsSet => {

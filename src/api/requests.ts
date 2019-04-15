@@ -1,5 +1,5 @@
 const root = 'http://localhost:5000/positions.json'
-const details = `http://localhost:5000/positions`
+const details = 'http://localhost:5000/positions'
 
 async function convertResult<T>(resp: Response): Promise<ApiResponse<T>> {
     if (resp.ok) {
@@ -52,6 +52,7 @@ export const getJobDetails = async ( id: string ): Promise<ApiResponse<JobData>>
     const resp = await fetchWrapper(url, {
         method: "GET",
         headers: headers()
-});
-return convertResult(resp);
+    });
+
+    return convertResult(resp);
 };

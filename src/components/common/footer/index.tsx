@@ -8,8 +8,8 @@ const {
 
 export const AppFooter = () => {
     return (
-        <div>
-            Footer
-        </div>
+        <Footer style={{ textAlign: 'center' }}>
+            ©2019
+        </Footer>
     )
 }

@@ -6,7 +6,7 @@ import  Search  from "./components/search"
 import  Details  from "./components/details"
 import { Layout } from 'antd';
 
-const { Sider, Content, } = Layout;
+const { Content } = Layout;
 
 class AppComponent extends React.PureComponent<RouteComponentProps, {}> {
 

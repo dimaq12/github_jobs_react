@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom'
 import { Col, Row, Divider } from "antd";
+import Moment from 'react-moment';
 
 interface JobItemComponentProps{
     jobDetails: JobData
@@ -27,7 +28,9 @@ export const JobItemComponent = ({jobDetails}: JobItemComponentProps) =>
                             <div><a style={{ color: 'grey'}}>{jobDetails.company}</a><span style={{ color: 'green', marginLeft: "5px" }}>- {jobDetails.type}</span></div>
                         </Col>
                         <Col>
-                            <span>{jobDetails.created_at}</span>
+                            <span>
+                                <Moment fromNow>{jobDetails.created_at}</Moment>
+                            </span>
                         </Col>
                     </Row>
                 </Col>

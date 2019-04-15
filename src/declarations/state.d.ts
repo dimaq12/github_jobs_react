@@ -21,7 +21,7 @@ declare interface SearchState{
 declare interface DetailsState{
     jobId: string;
     loading: false;
-    data: JobData | {};
+    data: JobData | null;
 }
 
 declare interface Window {

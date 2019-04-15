@@ -2,7 +2,7 @@ import { DetailsAction, DETAILS_SET, DETAILS_GET } from "./actions";
 
 const defaultDetailsState: DetailsState = {
     jobId: '',
-    data: {},
+    data: null,
     loading: false
 };
 
