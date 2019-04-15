@@ -3,6 +3,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { detailsGet } from './../../state/store/details/actions'
+import ReactMarkdown from 'react-markdown'
 
 interface DetailsComponentProps extends RouteComponentProps<{id: string}> {
     getJobDetails(id: string): any;
@@ -17,11 +18,11 @@ class DetailsComponent extends React.PureComponent<DetailsComponentProps, {}> {
     }
 
     render() {
-        
+        const  jobDetails  = this.props.data;
 
         return (
             <div>
-                helo
+                <ReactMarkdown source={jobDetails.description}/>
             </div>);
     }
 }
