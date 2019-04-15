@@ -17,7 +17,7 @@ class AppComponent extends React.PureComponent<RouteComponentProps, {}> {
                     <Content>
                         <Switch>
                             <Route path="/" exact={true} component={Search} />
-                            <Route path="/details"  component={Details} />
+                            <Route path="/details/:id"  component={Details} />
                         </Switch>
                     </Content>
                 <AppFooter/>

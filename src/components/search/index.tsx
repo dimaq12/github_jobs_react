@@ -18,6 +18,7 @@ interface SearchComponentProps extends RouteComponentProps<{}> {
 
 class SearchComponent extends React.PureComponent<SearchComponentProps, {}> {
     componentDidMount() {
+        this.props.onSubmit()
     }
 
     submit = () => {
@@ -49,9 +50,11 @@ class SearchComponent extends React.PureComponent<SearchComponentProps, {}> {
                             <Col span={24}>
                                 {JobContent}
                             </Col>
-                            <Col span={24}>
-                                <Pagination current={this.props.page} onChange={this.props.setPage} total={300} defaultPageSize={50}/>
-                            </Col>
+                            {data.length > 0 &&
+                               <Col span={24}>
+                                    <Pagination current={this.props.page} onChange={this.props.setPage} total={50} />
+                                </Col>
+                            }
                         </Row>
                     </div>
                 </Content>

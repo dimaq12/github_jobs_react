@@ -14,11 +14,14 @@ declare interface SearchState{
     count: number;
     data: JobData[];
     markedLinks: {};
+    loading: false;
+    init: false;
 }
 
 declare interface DetailsState{
-    detailDescription: string | undefined;
-    data: {};
+    jobId: string;
+    loading: false;
+    data: JobData | {};
 }
 
 declare interface Window {

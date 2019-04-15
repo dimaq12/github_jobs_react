@@ -5,16 +5,14 @@ import { getJobsListRequest } from "../../../api/requests";
 import { SEARCH, SET_PAGE, getJobsListSuccess} from './actions'
 
 function* getDetailsSaga() {
-    let searchForm: FormState = yield select((state: AppState) => state.form.searchForm.values);
+    let searchForm: FormState = yield select((state: AppState) => state.form.searchForm.values)
     const page: number = yield select((state: AppState) => state.search.page);
-    if(!searchForm) {
-        searchForm = {description:"",location:"", isFullTime: false}
-    }
+    searchForm = Object.assign({description:"",location:"", isFullTime: false}, searchForm)
 
     const resp: ApiResponse<JobData[]> = yield call(getJobsListRequest, 
-        searchForm.description || '',
-        searchForm.location || '', 
-        searchForm.isFullTime || false,
+        searchForm.description,
+        searchForm.location, 
+        searchForm.isFullTime,
         page
     );
 

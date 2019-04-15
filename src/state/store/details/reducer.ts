@@ -1,12 +1,19 @@
-import { DetailsAction, DETAILS_SET } from "./actions";
+import { DetailsAction, DETAILS_SET, DETAILS_GET } from "./actions";
 
 const defaultDetailsState: DetailsState = {
-    detailDescription: "",
-    data: {}
+    jobId: '',
+    data: {},
+    loading: false
 };
 
 export function detailsReducer(state: DetailsState = defaultDetailsState, action: DetailsAction): DetailsState {
     switch (action.type) {
+        case DETAILS_GET:
+            return {
+                ...state,
+                jobId: action.id 
+            } 
+
         case DETAILS_SET:
             return {
                 ...state,

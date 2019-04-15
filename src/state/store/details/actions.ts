@@ -4,17 +4,13 @@ export type DETAILS_GET = typeof DETAILS_GET;
 
 export interface DetailsGet {
     type: DETAILS_GET;
-    description: string;
-    location: string;
-    isFoolTime: boolean;
+    id: string;
 }
 
-export const detailsGet = (description: string, location: string, isFoolTime: boolean ): DetailsGet => {
+export const detailsGet = (id: string ): DetailsGet => {
     return {
         type: DETAILS_GET,
-        description,
-        location,
-        isFoolTime
+        id
     }
 }
 

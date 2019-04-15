@@ -4,7 +4,9 @@ const defaultSearchState: SearchState = {
     page: 1,
     count: 0,
     data: [],
-    markedLinks: {}
+    markedLinks: {},
+    loading: false,
+    init: false,
 };
 
 export function searchReducer(state: SearchState = defaultSearchState, action: SearchAction): SearchState {
